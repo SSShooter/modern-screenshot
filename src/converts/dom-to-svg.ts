@@ -8,9 +8,9 @@ export async function domToSvg<T extends Node>(node: T, options?: Options): Prom
 export async function domToSvg<T extends Node>(context: Context<T>): Promise<string>
 export async function domToSvg(node: any, options?: any) {
   const context = await orCreateContext(node, options)
-  const { width, height, ownerDocument } = context
+  const { width, height, padding, ownerDocument } = context
   const dataUrl = await domToDataUrl(context)
-  const svg = createSvg(width, height, ownerDocument)
+  const svg = createSvg(width, height, padding, ownerDocument)
   const svgImage = svg.ownerDocument.createElementNS(svg.namespaceURI, 'image')
   svgImage.setAttributeNS(null, 'href', dataUrl)
   svgImage.setAttributeNS(null, 'height', '100%')

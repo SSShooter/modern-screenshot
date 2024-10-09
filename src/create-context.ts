@@ -31,6 +31,7 @@ export async function createContext<T extends Node>(node: T, options?: Options &
 
   const context: Context<T> = {
     // Options
+    padding: 0,
     width: 0,
     height: 0,
     quality: 1,

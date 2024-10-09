@@ -90,11 +90,13 @@ export function getDocument<T extends Node>(target?: T | null): Document {
 
 export const XMLNS = 'http://www.w3.org/2000/svg'
 
-export function createSvg(width: number, height: number, ownerDocument?: Document | null): SVGSVGElement {
+export function createSvg(width: number, height: number, padding: number, ownerDocument?: Document | null): SVGSVGElement {
   const svg = getDocument(ownerDocument).createElementNS(XMLNS, 'svg')
-  svg.setAttributeNS(null, 'width', width.toString())
-  svg.setAttributeNS(null, 'height', height.toString())
-  svg.setAttributeNS(null, 'viewBox', `0 0 ${ width } ${ height }`)
+  const w = width + padding * 2
+  const h = height + padding * 2
+  svg.setAttributeNS(null, 'width', w.toString())
+  svg.setAttributeNS(null, 'height', h.toString())
+  svg.setAttributeNS(null, 'viewBox', `0 0 ${ w } ${ h }`)
   return svg
 }
 

@@ -1,4 +1,5 @@
 export interface Options {
+  padding?: number
   /**
    * Width in pixels to be applied to node before rendering.
    */
@@ -196,7 +197,7 @@ export interface Options {
   /**
    * Triggered after a node is cloned
    */
-  onCloneNode?: ((cloned: Node) => void) | null
+  onCloneNode?: ((cloned: Node) => void | Node) | null
 
   /**
    * Triggered after a node is embed

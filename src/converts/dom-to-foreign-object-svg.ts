@@ -87,13 +87,14 @@ export async function domToForeignObjectSvg(node: any, options?: any) {
 }
 
 function createForeignObjectSvg(clone: Node, context: Context): SVGSVGElement {
-  const { width, height } = context
-  const svg = createSvg(width, height, clone.ownerDocument)
+  const { width, height, padding } = context
+  const svg = createSvg(width, height, padding, clone.ownerDocument)
   const foreignObject = svg.ownerDocument.createElementNS(svg.namespaceURI, 'foreignObject')
-  foreignObject.setAttributeNS(null, 'x', '0%')
-  foreignObject.setAttributeNS(null, 'y', '0%')
+  foreignObject.setAttributeNS(null, 'x', `${ padding }`)
+  foreignObject.setAttributeNS(null, 'y', `${ padding }`)
   foreignObject.setAttributeNS(null, 'width', '100%')
   foreignObject.setAttributeNS(null, 'height', '100%')
+  foreignObject.setAttributeNS(null, 'style', 'overflow: visible;')
   foreignObject.append(clone)
   svg.appendChild(foreignObject)
   return svg
