@@ -17,6 +17,11 @@ export async function domToCanvas(node: any, options?: any) {
     context.svgDefsElement = context.ownerDocument?.createElementNS(XMLNS, 'defs')
     context.svgStyles.clear()
   }
+  const svgW = svg.getAttribute('width')
+  if (svgW) {
+    context.width = parseFloat(svgW)
+    context.height = parseFloat(svg.getAttribute('height')!)
+  }
   const image = createImage(dataUrl, svg.ownerDocument)
   return await imageToCanvas(image, context)
 }

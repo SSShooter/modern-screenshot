@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Playground</title>
@@ -8,25 +9,38 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    body,
+    html {
       margin: 0;
     }
   </style>
+  <style>
+    /* test tailwind compatibility */
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+      border-color: #e5e7eb;
+    }
+
+    #map,
+    #map2 {
+      margin-top: 50px;
+      height: 800px;
+      width: 100%;
+    }
+  </style>
 </head>
+
 <body>
-<div>
-  <div id="root">Playground</div>
-</div>
+  <div>
+    <div id="map"></div>
+  </div>
 
-<script type="module" async>
-  import { domToImage } from './src'
-
-  document.body.appendChild(
-    await domToImage(
-      document.querySelector('#root'),
-      { debug: true, scale: 2 },
-    ),
-  )
-</script>
+  <script type="module" src="dev.js" async>
+  </script>
 </body>
+
 </html>

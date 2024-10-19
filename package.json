@@ -1,19 +1,9 @@
 {
   "name": "@ssshooter/modern-screenshot",
   "type": "module",
-  "version": "4.4.41",
+  "version": "4.5.0",
   "packageManager": "pnpm@8.7.6",
   "description": "Quickly generate image from DOM node using HTML5 canvas and SVG",
-  "author": "wxm",
-  "license": "MIT",
-  "homepage": "https://github.com/ssshooter/modern-screenshot",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ssshooter/modern-screenshot.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ssshooter/modern-screenshot/issues"
-  },
   "keywords": [
     "dom",
     "image",
@@ -25,7 +15,19 @@
     "screenshot",
     "modern"
   ],
-  "sideEffects": false,
+  "license": "MIT",
+  "author": "wxm",
+  "homepage": "https://github.com/ssshooter/modern-screenshot",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssshooter/modern-screenshot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ssshooter/modern-screenshot/issues"
+  },
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "types/index.d.ts",
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
@@ -39,9 +41,11 @@
     },
     "./*": "./*"
   },
-  "main": "dist/index.mjs",
-  "module": "dist/index.mjs",
-  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "sideEffects": false,
   "browser": "dist/index.js",
   "typesVersions": {
     "*": {
@@ -51,10 +55,6 @@
       ]
     }
   },
-  "files": [
-    "dist",
-    "types"
-  ],
   "scripts": {
     "dev": "vite",
     "lint": "eslint src",
@@ -65,6 +65,9 @@
     "build": "vite build && pnpm build:worker && tsc --project tsconfig.build.json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "release": "bumpp package.json --commit \"release: v%s\" --push --all --tag"
+  },
+  "dependencies": {
+    "mind-elixir": "^4.2.0"
   },
   "devDependencies": {
     "@qq15725/eslint-config": "^1.1.0",
