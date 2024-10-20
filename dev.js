@@ -48,7 +48,7 @@ mind.init(example)
 // mind.init(MindElixir.new('new topic'))
 
 const toImg = async () => {
-  const dom = await domToCanvas(mind.nodes, {
+  const dom = await domToForeignObjectSvg(mind.nodes, {
     debug: true,
     onCloneNode: (node) => {
       const n = node
@@ -63,8 +63,14 @@ const toImg = async () => {
       // wrapper.appendChild(n)
       // return wrapper
     },
-    quality: 1,
+    quality: 0.2,
     padding: 300,
+    width: mind.nodes.offsetWidth,
+    height: mind.nodes.offsetHeight,
+    filter: (node) => {
+      const el = node
+      return el.tagName !== 'SPAN' && el.tagName !== 'ME-EPD' && el.id !== 'input-box'
+    },
   })
   document.body.appendChild(dom)
 }
